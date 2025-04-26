@@ -1,0 +1,129 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100px;
+
+  .loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .loading-message {
+    color: #666;
+    font-size: 0.9rem;
+  }
+}
+
+/* Spinner Styles */
+.spinner-container {
+  .spinner {
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #3498db;
+    animation: spin 1s ease-in-out infinite;
+
+    .loading-sm & {
+      width: 20px;
+      height: 20px;
+      border-width: 2px;
+    }
+
+    .loading-md & {
+      width: 30px;
+      height: 30px;
+      border-width: 3px;
+    }
+
+    .loading-lg & {
+      width: 50px;
+      height: 50px;
+      border-width: 4px;
+    }
+  }
+}
+
+/* Dots Styles */
+.dots-container {
+  display: flex;
+  gap: 0.5rem;
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #3498db;
+    animation: bounce 1.4s infinite ease-in-out;
+
+    &:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+    &:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    .loading-sm & {
+      width: 6px;
+      height: 6px;
+    }
+
+    .loading-lg & {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+/* Bar Styles */
+.bar-container {
+  width: 100px;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+
+  .bar {
+    height: 100%;
+    width: 30%;
+    background-color: #3498db;
+    animation: slide 2s ease-in-out infinite;
+
+    .loading-sm & {
+      height: 2px;
+    }
+
+    .loading-lg & {
+      height: 6px;
+    }
+  }
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}

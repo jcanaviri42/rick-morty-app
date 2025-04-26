@@ -1,0 +1,22 @@
+<div class="home-container">
+  <div class="hero-section">
+    <h1>Welcome to the Rick and Morty Universe</h1>
+    <p class="lead">
+      Explore characters, episodes, and locations from the multiverse
+    </p>
+  </div>
+
+  <div class="features-section">
+    <div class="row">
+      <div *ngFor="let feature of features" class="col-md-4 mb-4">
+        <div class="feature-card" [routerLink]="feature.route">
+          <div class="feature-icon">
+            <i class="bi bi-{{ feature.icon }}"></i>
+          </div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

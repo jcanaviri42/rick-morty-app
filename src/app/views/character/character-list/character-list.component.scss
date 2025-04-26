@@ -1,0 +1,43 @@
+.character-list-container {
+  padding: 2rem;
+
+  .search-container {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+
+    input {
+      flex: 1;
+    }
+  }
+
+  .character-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .badge {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+
+    .page-link {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+<div class="character-list-container">
+  <div class="search-container mb-4">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Search characters..."
+      class="form-control"
+      (keyup.enter)="searchCharacters()"
+    />
+    <button class="btn btn-primary" (click)="searchCharacters()">Search</button>
+  </div>
+
+  <app-loading [isLoading]="isLoading"></app-loading>
+
+  <div *ngIf="!isLoading" class="row">
+    <div *ngFor="let character of characters" class="col-md-4 mb-4">
+      <div
+        class="card character-card"
+        (click)="viewCharacterDetails(character.id)"
+      >
+        <img
+          [src]="character.image"
+          class="card-img-top"
+          [alt]="character.name"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ character.name }}</h5>
+          <p class="card-text">
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-success': character.status === 'Alive',
+                'bg-danger': character.status === 'Dead',
+                'bg-secondary': character.status === 'unknown'
+              }"
+            >
+              {{ character.status }}
+            </span>
+            {{ character.species }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!searchQuery && !isLoading" class="pagination-container mt-4">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="goToPage(currentPage - 1)">Previous</a>
+        </li>
+        <li
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          class="page-item"
+          [class.active]="currentPage === i + 1"
+        >
+          <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="goToPage(currentPage + 1)">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

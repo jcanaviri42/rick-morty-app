@@ -1,0 +1,48 @@
+<div class="character-detail-container">
+  <app-loading [isLoading]="isLoading"></app-loading>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <div *ngIf="character && !isLoading" class="character-detail-card">
+    <div class="row">
+      <div class="col-md-4">
+        <img
+          [src]="character.image"
+          [alt]="character.name"
+          class="img-fluid character-image"
+        />
+      </div>
+      <div class="col-md-8">
+        <h2>{{ character.name }}</h2>
+        <p [class]="getStatusClass(character.status)">
+          <strong>Status:</strong> {{ character.status }}
+        </p>
+        <p><strong>Species:</strong> {{ character.species }}</p>
+        <p><strong>Type:</strong> {{ character.type || "Unknown" }}</p>
+        <p><strong>Gender:</strong> {{ character.gender }}</p>
+        <p>
+          <strong>Origin:</strong> {{ character.origin?.name || "Unknown" }}
+        </p>
+        <p>
+          <strong>Location:</strong> {{ character.location?.name || "Unknown" }}
+        </p>
+      </div>
+    </div>
+
+    <div class="episodes-section mt-4">
+      <h3>Episodes</h3>
+      <div *ngIf="character.episode.length === 0" class="alert alert-info">
+        No episodes found for this character.
+      </div>
+      <div class="row">
+        <div *ngFor="let episode of character.episode" class="col-md-3 mb-3">
+          <div class="episode-card">
+            <h5>{{ episode.name }}</h5>
+            <p>{{ episode.episode }}</p>
+            <p class="text-muted">{{ episode.air_date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

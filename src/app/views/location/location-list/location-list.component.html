@@ -1,0 +1,35 @@
+<div class="location-list-container">
+  <h1>Locations</h1>
+
+  <app-loading [isLoading]="isLoading"></app-loading>
+
+  <div *ngIf="!isLoading" class="row">
+    <div *ngFor="let location of locations" class="col-md-6 mb-4">
+      <div class="location-card" (click)="viewLocationDetails(location.id)">
+        <h3>{{ location.name }}</h3>
+        <p><strong>Type:</strong> {{ location.type }}</p>
+        <p><strong>Dimension:</strong> {{ location.dimension }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading" class="pagination-container mt-4">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link" (click)="goToPage(currentPage - 1)">Previous</a>
+        </li>
+        <li
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          class="page-item"
+          [class.active]="currentPage === i + 1"
+        >
+          <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link" (click)="goToPage(currentPage + 1)">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div *ngIf="isLoading" class="loading-container">
+  <div class="loading-content">
+    <ng-container [ngSwitch]="type">
+      <!-- Spinner type (default) -->
+      <div *ngSwitchCase="'spinner'" class="spinner-container">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Dots type -->
+      <div *ngSwitchCase="'dots'" class="dots-container">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <!-- Bar type -->
+      <div *ngSwitchCase="'bar'" class="bar-container">
+        <div class="bar"></div>
+      </div>
+    </ng-container>
+
+    <div *ngIf="message" class="loading-message">{{ message }}</div>
+  </div>
+</div>

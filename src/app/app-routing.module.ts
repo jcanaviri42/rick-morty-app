@@ -1,10 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CharactersListComponent } from './characters-list/characters-list.component';
 
 const routes: Routes = [
-  { path: 'characters', component: CharactersListComponent },
-  { path: '**', redirectTo: '' },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./views/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'characters',
+    loadChildren: () =>
+      import('./views/character/character.module').then(
+        (m) => m.CharactersModule
+      ),
+  },
+  {
+    path: 'episodes',
+    loadChildren: () =>
+      import('./views/episode/episodes.module').then((m) => m.EpisodesModule),
+  },
+  {
+    path: 'locations',
+    loadChildren: () =>
+      import('./views/location/locations.module').then((m) => m.LocationsModule),
+  },
+  {
+    path: 'about',
+    loadChildren: () =>
+      import('./views/about/about.module').then((m) => m.AboutModule),
+  },
 ];
 
 @NgModule({
