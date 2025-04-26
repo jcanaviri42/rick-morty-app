@@ -1,0 +1,24 @@
+<div class="character-grid">
+  <div *ngFor="let character of characters" class="character-card">
+    <img [src]="character.image" [alt]="character.name" />
+    <h3>{{ character.name }}</h3>
+    <p>Status: {{ character.status }}</p>
+    <p>Species: {{ character.species }}</p>
+  </div>
+</div>
+
+<div class="pagination">
+  <button
+    (click)="loadCharacters(currentPage - 1)"
+    [disabled]="currentPage === 1"
+  >
+    Previous
+  </button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button
+    (click)="loadCharacters(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
+    Next
+  </button>
+</div>
