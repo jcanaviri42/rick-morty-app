@@ -61,4 +61,27 @@ export class CharacterListComponent implements OnInit {
   viewCharacterDetails(id: string): void {
     this.router.navigate(['/characters', id]);
   }
+
+  getVisiblePages(): number[] {
+    const visiblePages = [];
+    const maxVisible = 5; // Adjust as needed
+    
+    let start = Math.max(2, this.currentPage - 2);
+    let end = Math.min(this.totalPages - 1, this.currentPage + 2);
+  
+    // Adjust if we're at the beginning
+    if (this.currentPage <= 3) {
+      end = Math.min(5, this.totalPages - 1);
+    } 
+    // Adjust if we're at the end
+    else if (this.currentPage >= this.totalPages - 2) {
+      start = Math.max(this.totalPages - 4, 2);
+    }
+  
+    for (let i = start; i <= end; i++) {
+      visiblePages.push(i);
+    }
+  
+    return visiblePages;
+  }
 }

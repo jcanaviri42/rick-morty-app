@@ -1,0 +1,31 @@
+.character-card {
+  background: white;
+  border: none;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba($portal-lilac, 0.2);
+    transform: translateY(-3px);
+  }
+
+  .card-img-top {
+    border-bottom: 3px solid $portal-teal;
+  }
+
+  .status-badge {
+    &--alive {
+      background: lighten($portal-teal, 30%);
+      color: darken($portal-teal, 30%);
+    }
+    &--dead {
+      background: lighten(#dc3545, 35%);
+      color: #dc3545;
+    }
+    &--unknown {
+      background: #f8f9fa;
+      color: #6c757d;
+      border: 1px solid #dee2e6;
+    }
+  }
+}

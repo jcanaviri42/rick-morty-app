@@ -1,0 +1,13 @@
+// Light theme palette
+$portal-teal: #00c9a7;
+$portal-lilac: #845ec2;
+$sky-blue: #4cc9f0;
+$sun-yellow: #ffd166;
+$paper-white: #f8f9fa;
+
+// Override Bootstrap
+$primary: $portal-teal;
+$secondary: $portal-lilac;
+$light: $paper-white;
+$body-bg: $paper-white;
+$body-color: #212529;

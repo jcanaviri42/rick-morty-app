@@ -18,10 +18,9 @@ export class CharacterDetailGraphqlComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.graphqlService.getCharacter(Number(id)).subscribe(
-      ({ data, loading }) => {
+    this.graphqlService.getCharacter(String(id)).subscribe(
+      ({ data }) => {
         this.character = data.character;
-        this.loading = loading;
       },
       (error) => {
         console.error('Error:', error);

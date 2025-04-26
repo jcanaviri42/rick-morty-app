@@ -5,13 +5,13 @@ import { InMemoryCache } from '@apollo/client/core';
 import { Apollo, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
+import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiService } from './core/services/api.service';
 import { GraphqlService } from './core/services/graphql.service';
 import { CharacterResolver } from './resolvers/character.resolver';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     CommonModule,
+    NgbModule,
   ],
   providers: [
     Apollo,
